@@ -2,7 +2,7 @@
 * {
     margin: 0;
     padding: 0;
-
+    box-sizing: border-box;
 }
 
 html {
@@ -251,8 +251,30 @@ a {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 3rem;
+    
 }
 
 .form-group {
     flex: 1 1 320px;
+}
+
+.form-group label {
+    display: block;
+}
+
+.form-group input,
+.form-group textarea{
+    border: none;
+    background: white;
+    width: 50%;
+    
+}
+
+.form-group button {
+    border: 0.5rem solid white;
+    background: none;
+    color: white;
+    padding-bottom: 1.5rem 2rem;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
 }
