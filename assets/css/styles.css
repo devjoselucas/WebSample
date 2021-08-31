@@ -1,4 +1,12 @@
 
+:root {
+    --primary-color: #0A1128;
+    --white-color: #FFFFFF;
+    --light-gray-color: #EEEEEE;
+    --secondary-color: crimson;
+    --gap: 3rem;
+  }
+
 * {
     margin: 0;
     padding: 0;
@@ -11,10 +19,10 @@ html {
 }
 
 body {
-
     font-family: 'Open Sans', sans-serif;
     font-size: 2rem;
-        
+    color: var(--primary-color);
+    line-height: 1.5;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -24,10 +32,13 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: 6rem;
     text-transform: uppercase;
-    font-style: inherit;
+    
 }
 h2 {
     font-size: 5.5rem;
+    margin-bottom: 5rem;
+    text-transform: uppercase;
+    line-height: 1.2;
     
 }
 h3 {
@@ -47,6 +58,10 @@ h6 {
     
 }
 
+a {
+    text-decoration: none;
+}
+
 p {
     margin-bottom: 3rem;
     text-align: justify;
@@ -54,22 +69,32 @@ p {
 }
 
 .responsive-table {
+    overflow: hidden;
     overflow-x: auto;
 }
 
 table {
+    min-width: 360px;
     width: 100%;
     border-collapse: collapse;
 }
 
-table td, table th {
-    padding: 0.5rem;
+table caption {
+    font-style: italic;
+    font-size: 1.6rem;
     text-align: left;
-    border: 0.1rem solid grey;
+    margin-bottom: 1rem;
 }
 
-table th {
-    background: grey;
+table td, table th {
+    white-space: nowrap;
+    padding: 1rem;
+    text-align: left;
+    border: 0.1rem solid var(--light-gray-color)
+}
+
+tfoot td, table th {
+    background: var(--light-gray-color);
 }
 
 .main-background {
@@ -88,21 +113,21 @@ table th {
 }
 
 .menu {
-    background-color: white;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
-    max-height: auto;
-    border-bottom:0.1rem solid #EEEEEE;
     z-index: 1;
+    border-bottom: 0.1rem solid var(--light-gray-color);
 }
 
 .menu-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .menu ul {
@@ -111,22 +136,38 @@ table th {
 }
 
 .menu h1 {
-    font-size: 3rem;
+    font-size: 2.3rem;
+    color: var(--primary-color);
 }
 
 .menu ul li a {
     display: block;
-    padding: 1.8rem;
-    font-family: 'Montserrat', sans-serif;
+    padding: 2rem;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    position: relative;
 }
 
 .menu-spacing {
     height: 6rem
 }
 
-a {
-    text-decoration: none;
+.menu ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    width: 0;
+    height: 0.2rem;
+    background: var(--secondary-color); 
+    transition: all 300ms ease-in-out;
 }
+  
+.menu ul li a:hover::after {
+    width: 50%;
+    left: 25%;
+}
+
 .main-content {
     max-width: 120rem;
     margin: 0 auto;
