@@ -25,6 +25,11 @@ body {
     line-height: 1.5;
 }
 
+body .full-width {
+    width: 100%;
+    flex: 1 1 100%;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
 }
@@ -106,10 +111,8 @@ tfoot td, table th {
 }
 
 .white-background {
-    background-color: white;
-    background-size: cover;
-    background-position: center center;
-    color: black;
+    background: var(--white-color);
+    color: var(--primary-color);
 }
 
 .menu {
@@ -149,7 +152,7 @@ tfoot td, table th {
 }
 
 .menu-spacing {
-    height: 6rem
+    height: 65px;
 }
 
 .menu ul li a::after {
@@ -180,14 +183,14 @@ tfoot td, table th {
 
 .intro-content {
     position: relative;
-    top: 2rem;
+    /* top: -8rem; */
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--gap);
     min-height: 100vh;
 }
 
-.intro-text-content, intro-img {
+.intro-text-content, .intro-img {
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -199,25 +202,26 @@ tfoot td, table th {
     text-transform: uppercase;
 }
 
-.intro-img img{
+.intro-img img,
+.intro-img svg{
     max-width: 100%;
-    height: 90%;
+    height: auto;
 
 }
 
 .intro-img2 img {
     max-width: 100%;
-    height: 90%;
+    height: auto;
 }
 
 .top3-content {
     max-width: 64rem;
-    text-align: center;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
     min-height: 100vh;
+    text-align: center;
 }
 
 .top3-content h2 {
@@ -226,7 +230,6 @@ tfoot td, table th {
 }
 
 .grid-one-content {
-    height: 100vh;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -240,7 +243,7 @@ tfoot td, table th {
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10rem;
+    gap: var(--gap);
     counter-reset: grid-counter;
 }
 
@@ -257,7 +260,7 @@ tfoot td, table th {
     position: absolute;
     font-size: 8rem;
     font-style: italic;
-    top: -3rem;
+    top: -4rem;
     left: -2rem;
     transform: rotate(5deg);
 }
@@ -305,119 +308,164 @@ tfoot td, table th {
 
 .form-group label {
     display: block;
+    margin-bottom: 1rem;
 }
 
 .form-group input,
 .form-group textarea{
     border: none;
-    background: white;
-    width: 50%;
+    background: var(--white-color);
+    padding: 1.5rem 2rem;
+    width: 100%;
+    font-size: 3rem;
+    outline: none;
     
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  box-shadow: 0 0 10px 2px var(--secondary-color);
+}
+
+.form-group button:hover {
+    background: var(--white-color);
+    color: var(--primary-color);
+}
+  
+.form-group::placeholder {
+    color: var(--light-gray-color);
 }
 
 .form-group button {
-    border: 0.5rem solid white;
+    border: 0.5rem solid var(--white-color);
     background: none;
-    color: white;
-    padding-bottom: 1.5rem 2rem;
+    color: var(--white-color);
+    padding: 1.5rem 2rem;
+    font-size: 3rem;
     cursor: pointer;
     transition: all 300ms ease-in-out;
 }
+.footer a {
+    color: var(--primary-color);
+}
 
-.footer p{
-    text-align: center;
-    font-size: 1rem;
+.heart {
+color: var(--secondary-color);
+}
+
+.footer p {
+margin: 0;
+padding: 3rem;
 }
 
 .close-menu {
+display: none;
+}
+
+.back-to-top {
+position: fixed;
+bottom: 2rem;
+right: 2rem;
+background: var(--white-color);
+width: 5rem;
+height: 5rem;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 50%;
+color: var(--primary-color);
+transform: rotate(-90deg);
+border: 0.1rem solid var(--primary-color);
+}
+
+
+@media (max-width: 800px) {
+.intro-content, .grid {
+    grid-template-columns: 1fr;
+}
+
+.gallery-img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%; 
+}
+
+.gallery-img img {
+    width: 100%;
+}
+
+.grid-one-content {
+    display: block;
+}
+
+.menu {
+    bottom: 0;
+    text-align: center;
+}
+
+.menu-content, .menu-content ul {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.menu-content {
+    height: 100vh;
+}
+
+.menu {
     display: none;
 }
 
-.back-to-top{
+.close-menu-label::after {
+    content: '☰';
     position: fixed;
-    bottom: 2rem;
+    z-index: 2;
+    top: 2rem;
     right: 2rem;
-    background: white;
-    width: 5rem;
-    height: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color: black;
-    
+    background: var(--primary-color);
+    color: var(--white-color);
+    font-size: 3rem;
+    line-height: 3rem;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    padding: 0.5rem;
+    cursor: pointer;
 }
 
-@media (max-width: 800px) {
-    .intro-content, .grid {
-        grid-template-columns: 1fr;
-    }
-    .gallery-img{
+.close-menu:checked~.menu {
+    display: block;
+}
 
-        
-    }
+.close-menu:checked~.close-menu-label::after {
+    content: '×';
+}
 
-    .gallery-img img {
-        width: 100%;
-    }
+.menu-spacing {
+    display: none;
+}
 
-    .grid-one-content {
-        display: block;
-    }
+h1 {
+    font-size: 4rem;
+}
 
-    .menu {
-        bottom: 0;
-    }
+h2 {
+    font-size: 3.6rem;
+}
 
-    .menu-content, .menu-content ul {
-        flex-direction: column;
-        
-        justify-content: center;
-    }
+h3 {
+    font-size: 3.4rem;
+}
 
-    .menu-content {
-        height: 100vh;
-    }
+h4 {
+    font-size: 3.2rem;
+}
 
+h5 {
+    font-size: 3rem;
+}
 
-    .menu {
-        display: none;
-    }
-
-    .close-menu {
-        position: fixed;
-        z-index: 2;
-        top: 0;
-        left: 0;
-    }
-
-    .close-menu-label::after {
-        content: '☰';
-        position: fixed;
-        z-index: 2;
-        top: 0;
-        right: 0;
-        background: black;
-        color: white;
-        font-size: 3rem;
-        line-height: 3rem;
-        width: 3rem;
-        height: 3rem;
-        text-align: center;
-        padding: 0.5rem;
-        cursor: pointer;
-    }
-
-    .close-menu:checked~.menu {
-        display: block;
-    }
-
-    .close-menu:checked~.close-menu-label::after{
-        display: block;
-        content: 'x';
-    }
-
-    .menu-spacing {
-        display: none;
-    }
+h6 {
+    font-size: 2.8rem;
+}
 }
